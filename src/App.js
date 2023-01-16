@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import ExpenseItem from "./components/ExpenseItem";
 
 function App() {
+  const expenses = [
+    {
+      title: "Car Insurance",
+      date: new Date().toJSON().slice(0, 10).replace(/-/g, "/"),
+      amount: 540,
+    },
+    {
+      title: "Phone Bought",
+      date: new Date().toJSON().slice(0, 10).replace(/-/g, "/"),
+      amount: 1200,
+    },
+    {
+      title: "Bike",
+      date: new Date().toJSON().slice(0, 10).replace(/-/g, "/"),
+      amount: 600,
+    },
+  ];
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Hey there</h1>
+      {expenses.map((item) => {
+        return <ExpenseItem item={item} />;
+      })}
     </div>
   );
 }
