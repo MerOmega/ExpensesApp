@@ -1,29 +1,43 @@
-import ExpenseItem from "./components/ExpenseItem";
+import Expenses from "./components/Expenses"
+import 'bootstrap/dist/css/bootstrap.min.css';
 
+function getday(option) {
+  let today = new Date();
+  return today.toLocaleDateString("es-ES", option);
+}
 function App() {
+  let day = {
+    day: getday({day:"2-digit"}),
+    month: getday({month:"long"}),
+    year: getday({year:"numeric"}),
+  }
   const expenses = [
     {
       title: "Car Insurance",
-      date: new Date().toJSON().slice(0, 10).replace(/-/g, "/"),
+      month: day.month,
+      day: day.day,
+      year: day.year,
       amount: 540,
     },
     {
       title: "Phone Bought",
-      date: new Date().toJSON().slice(0, 10).replace(/-/g, "/"),
+      month: day.month,
+      day: day.day,
+      year: day.year,
       amount: 1200,
     },
     {
       title: "Bike",
-      date: new Date().toJSON().slice(0, 10).replace(/-/g, "/"),
+      month: day.month,
+      day: day.day,
+      year: day.year,
       amount: 600,
     },
   ];
   return (
     <div className="App">
       <h1>Hey there</h1>
-      {expenses.map((item) => {
-        return <ExpenseItem item={item} />;
-      })}
+      <Expenses expenses={expenses}></Expenses>
     </div>
   );
 }

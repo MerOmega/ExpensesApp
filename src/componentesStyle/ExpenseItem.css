@@ -2,10 +2,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
     padding: 0.5rem;
     margin: 1rem 0;
-    border-radius: 12px;
     background-color: #4b4b4b;
   }
   
@@ -36,7 +34,13 @@
     padding: 0.5rem;
     border-radius: 12px;
   }
-  
+  .expense-item__date{
+    color: white;
+    -ms-flex-align: start;
+  }
+  .title-item{
+    text-align: center;
+  }
   @media (min-width: 580px) {
     .expense-item__description {
       flex-direction: row;
