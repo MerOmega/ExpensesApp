@@ -1,4 +1,4 @@
-import "../componentesStyle/ExpenseDate.css"
+import "../../componentesStyle/UI/ExpenseDate.css"
 
 function ExpenseDate(props){
     return(

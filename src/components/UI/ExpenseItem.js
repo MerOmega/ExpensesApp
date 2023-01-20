@@ -1,4 +1,4 @@
-import "../componentesStyle/ExpenseItem.css";
+import "../../componentesStyle/UI/ExpenseItem.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from "react";
 import ExpenseDate from "./ExpenseDate";
