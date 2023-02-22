@@ -1,6 +1,8 @@
 import Expenses from "./components/UI/Expenses"
 import 'bootstrap/dist/css/bootstrap.min.css';
+import "./componentesStyle/input.css";
 import NewExpense from "./components/NewExpense/NewExpense";
+import { useState } from "react";
 
 function getday(option) {
   let today = new Date();
@@ -8,9 +10,9 @@ function getday(option) {
 }
 
 let day = {
-  day: getday({day:"2-digit"}),
-  month: getday({month:"long"}),
-  year: getday({year:"numeric"}),
+  day: getday({ day: "2-digit" }),
+  month: getday({ month: "long" }),
+  year: getday({ year: "numeric" }),
 }
 
 let expenses = [
@@ -37,22 +39,20 @@ let expenses = [
   },
 ];
 function App() {
-  
-  const newExpenseHandler=(expense)=>{
-      let newData = {
-        title: expense.enteredTitle,
-        month: expense.enteredDate.substring(5, 7),
-        day: expense.enteredDate.substring(8, 10),
-        year: expense.enteredDate.substring(0, 4),
-        amount: expense.enteredAmount,
-      }
-      expenses.push(newData)
-      console.log(expenses)
+    const newExpenseHandler = (expense) => {
+    let newData = {
+      title: expense.enteredTitle,
+      month: expense.enteredDate.substring(5, 7),
+      day: expense.enteredDate.substring(8, 10),
+      year: expense.enteredDate.substring(0, 4),
+      amount: expense.enteredAmount,
+    }
+    expenses.push(newData)
+    console.log(expenses)
   }
 
   return (
-    <div className="App">
-      <h1>Hey there</h1>
+    <div className="App dark">
       <NewExpense saveExpense={newExpenseHandler}></NewExpense>
       <Expenses expenses={expenses} ></Expenses>
     </div>
