@@ -15,7 +15,7 @@ let day = {
   year: getday({ year: "numeric" }),
 }
 
-let expenses = [
+const DUMMY_CONTENT = [
   {
     title: "Car Insurance",
     month: "05",
@@ -39,7 +39,8 @@ let expenses = [
   },
 ];
 function App() {
-    const newExpenseHandler = (expense) => {
+  const [expences, setExpenses] = useState(DUMMY_CONTENT);
+  const newExpenseHandler = (expense) => {
     let newData = {
       title: expense.enteredTitle,
       month: expense.enteredDate.substring(5, 7),
@@ -47,14 +48,24 @@ function App() {
       year: expense.enteredDate.substring(0, 4),
       amount: expense.enteredAmount,
     }
-    expenses.push(newData)
-    console.log(expenses)
+
+    setExpenses((prevData) => {
+      const updatedData = [newData, ...prevData];
+      updatedData.sort((a, b) => {
+        const dateA = new Date(`${a.year}-${a.month}-${a.day}`);
+        const dateB = new Date(`${b.year}-${b.month}-${b.day}`);
+        return dateB - dateA;
+      }).reverse();
+      return updatedData;
+    });
   }
+
+
 
   return (
     <div className="App dark">
       <NewExpense saveExpense={newExpenseHandler}></NewExpense>
-      <Expenses expenses={expenses} ></Expenses>
+      <Expenses expenses={expences} ></Expenses>
     </div>
   );
 }
