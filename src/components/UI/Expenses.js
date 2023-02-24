@@ -3,6 +3,7 @@ import "../../componentesStyle/UI/Expenses.css"
 import NotFoundExpense from "../EmptyExpense/NotFoundExpense";
 import ExpenseItem from "./ExpenseItem";
 import ExpensesFilter from "./ExpensesFilter";
+import ExpensesChart from "../Chart/ExpensesChart";
 
 function Expenses(props) {
     const [filterYear, setFilterYear] = useState("2023");
@@ -18,6 +19,7 @@ function Expenses(props) {
     return (
       <div className="expenses">
         <ExpensesFilter defaultYear={filterYear} onChangeFilter={filterChange} />
+        <ExpensesChart expenses={filteredExpenses}></ExpensesChart>
         {filteredExpenses.length === 0 ? (
           <NotFoundExpense/>
         ) : (
